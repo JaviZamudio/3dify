@@ -21,7 +21,7 @@ async function createWindow() {
 
     mainWindow.loadURL(`http://localhost:3013`)
     mainWindow.webContents.openDevTools()
-    mainWindow.setMenu(null)
+    // mainWindow.setMenu(null)
 }
 
 app.on('ready', createWindow)
