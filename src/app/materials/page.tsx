@@ -16,8 +16,8 @@ export default async function MaterialsPage() {
   return (
     <div className="">
       <h1 className="text-4xl">Materials Page</h1>
-
       <Divider className="my-6" />
+
       <div className="grid grid-cols-3 gap-4 mt-4">
         {materials.map((material) => (
           // under 700 grams, bg-warning-400
