@@ -11,13 +11,13 @@ datasource db {
 }
 
 model Project {
-  id          Int       @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   name        String
   description String?
-  lightCost   Float? // per hour, in MXN
-  hourCost    Float? // in MXN
-  date        DateTime? @default(now())
-  Figure      Figure[]
+  lightCost   Float // per hour, in MXN
+  hourCost    Float // in MXN
+  date        DateTime @default(now())
+  Figures     Figure[]
 }
 
 model Provider {
@@ -28,7 +28,7 @@ model Provider {
   email       String?
   address     String?
   website     String?
-  Material    Material[]
+  Materials   Material[]
 }
 
 model Material {
@@ -54,7 +54,7 @@ model Figure {
 }
 
 // Update database
-// prisma migrate dev --name init
+// npx prisma migrate dev --name init
 
 // Open Studio
 // npx prisma studio
