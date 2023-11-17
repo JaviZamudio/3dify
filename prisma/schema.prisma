@@ -46,8 +46,15 @@ model Figure {
   description String?
   hours       Float
   weight      Int // in grams
+  waste       Int      @default(0) // in grams
   projectId   Int
   materialId  Int
   Project     Project  @relation(fields: [projectId], references: [id])
   Material    Material @relation(fields: [materialId], references: [id])
 }
+
+// Update database
+// prisma migrate dev --name init
+
+// Open Studio
+// npx prisma studio
