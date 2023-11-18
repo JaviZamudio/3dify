@@ -1,3 +1,4 @@
+import NextLink from "@/components/NextLink";
 import prisma from "@/configs/db";
 import { Button, Card, CardBody, CardFooter, CardHeader, Divider } from "@nextui-org/react";
 
@@ -49,7 +50,7 @@ export default async function ProjectsPage() {
           const profitMargin = (revenue / totalPrice) * 100
 
           return (
-            <Card key={project.id} className="max-w-4xl w-full">
+            <Card key={project.id} className="w-full">
               <CardHeader className="flex flex-col gap-1 w-full items-start">
                 <span className="text-xl font-semibold">{project.name}</span>
                 <span className="text-sm text-default-500">{project.date?.toLocaleDateString()}</span>
@@ -66,7 +67,7 @@ export default async function ProjectsPage() {
               </CardBody>
               <Divider />
               <CardFooter className="flex justify-end">
-                <Button color="secondary" variant="flat" size="md">Ver detalles</Button>
+                <Button color="secondary" variant="flat" size="md" as={NextLink} href={`/projects/${project.id}`}>Ver detalles</Button>
               </CardFooter>
             </Card>
           )

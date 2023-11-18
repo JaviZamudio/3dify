@@ -14,8 +14,6 @@ export default async function ProvidersPage() {
     }
   })
 
-  console.log(providers)
-
   return (
     <div className="">
       <h1 className="text-4xl">Providers Page</h1>
