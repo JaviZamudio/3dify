@@ -15,15 +15,15 @@ export async function POST(request: NextRequest, { params }: { params: { id: num
                 hours: reqBody.hours,
                 weight: reqBody.weight,
                 waste: reqBody.waste,
-                projectId: projectId,
-                materialId: reqBody.materialId  
+                projectId: Number(projectId),
+                materialId: reqBody.materialId
             },
         });
 
         const material = await prisma.material.findUnique({
             where: { id: reqBody.materialId }
         });
-        
+
         if (material) {
             const newStock = material.stock - reqBody.weight - reqBody.waste;
             await prisma.material.update({
@@ -36,6 +36,6 @@ export async function POST(request: NextRequest, { params }: { params: { id: num
 
     } catch (error) {
         console.log(error);
-        return NextResponse.json({ code: "ERROR", message: "Error creating figure" }); 
+        return NextResponse.json({ code: "ERROR", message: "Error creating figure" });
     }
 }

@@ -1,5 +1,6 @@
+import NextLink from "@/components/NextLink";
 import prisma from "@/configs/db";
-import { Button, Card, CardBody, CardFooter, CardHeader, Divider } from "@nextui-org/react";
+import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Link } from "@nextui-org/react";
 
 export default async function ProjectsPage({ params }: { params: { id: string } }) {
   const project = await prisma.project.findUniqueOrThrow({
@@ -15,6 +16,7 @@ export default async function ProjectsPage({ params }: { params: { id: string } 
       lightCost: true,
       Figures: {
         select: {
+          id: true,
           name: true,
           hours: true,
           weight: true,
@@ -71,15 +73,17 @@ export default async function ProjectsPage({ params }: { params: { id: string } 
       {/* Figures */}
       <div className="flex justify-between items-center">
         <h2 className="text-2xl">Figuras</h2>
-        <Button color="primary" variant="solid" size="md" className="gap-1">
-          <span className="material-symbols-outlined">add</span>
-          Nuevo
-        </Button>
+        <NextLink href={`/projects/${params.id}/figures/new`}>
+          <Button color="primary" variant="solid" size="md" className="gap-1">
+            <span className="material-symbols-outlined">add</span>
+            Nuevo
+          </Button>
+        </NextLink>
       </div>
 
       <div className="flex flex-col gap-4 w-full items-center mt-4">
         {project.Figures.map((figure) => (
-          <Card key={figure.name} className="w-full">
+          <Card key={figure.id} className="w-full">
             <CardHeader className="flex flex-col gap-1 w-full items-start">
               <span className="text-xl font-semibold">{figure.name}</span>
             </CardHeader>
