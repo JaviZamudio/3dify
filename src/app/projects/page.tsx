@@ -1,6 +1,7 @@
 import NextLink from "@/components/NextLink";
 import prisma from "@/configs/db";
 import { Button, Card, CardBody, CardFooter, CardHeader, Divider } from "@nextui-org/react";
+import Link from "next/link";
 
 export default async function ProjectsPage() {
   const projects = await prisma.project.findMany({
@@ -34,10 +35,12 @@ export default async function ProjectsPage() {
     <div className="">
       <div className="flex justify-between items-center">
         <h1 className="text-4xl">Projects Page</h1>
-        <Button color="primary" variant="solid" size="md" className="gap-1">
-          <span className="material-symbols-outlined">add</span>
-          Nuevo
-        </Button>
+        <Link href="/projects/new">
+          <Button color="primary" variant="solid" size="md" className="gap-1">
+            <span className="material-symbols-outlined">add</span>
+            Nuevo
+          </Button>
+        </Link>
       </div>
       <Divider className="my-6" />
 
