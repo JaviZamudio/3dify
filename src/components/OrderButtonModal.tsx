@@ -24,7 +24,7 @@ export default function OrderButtonModal({ providers }: { providers: Provider[] 
       <Button color="default" variant="flat" size="sm" onClick={openModal}>
         Pedir
       </Button>
-      <Modal isOpen={open}>
+      <Modal isOpen={open} onClose={closeModal}>
         <ModalContent>
           <ModalHeader>Proveedores</ModalHeader>
           <ModalBody>
