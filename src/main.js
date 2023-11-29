@@ -17,11 +17,12 @@ async function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 1440,
         height: 800,
+        icon: `${__dirname}/../public/logo_mini.png`,
     })
 
     mainWindow.loadURL(`http://localhost:3013`)
     mainWindow.webContents.openDevTools()
-    // mainWindow.setMenu(null)
+    mainWindow.setMenu(null)
 }
 
 app.on('ready', createWindow)
